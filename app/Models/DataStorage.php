@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class DataStorage extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
+    public function product()
+    {
+        return $this->morphOne(Product::class, 'productable');
+    }
 }

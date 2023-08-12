@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
-            $table->unsignedBigInteger('morphable_id');
-            $table->string('morphable_type');
+            $table->unsignedBigInteger('productable_id');
+            $table->string('productable_type');
             $table->timestamps();
         });
     }
