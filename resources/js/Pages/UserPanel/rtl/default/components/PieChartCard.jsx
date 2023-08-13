@@ -1,6 +1,6 @@
-import PieChart from "components/charts/PieChart";
-import { pieChartData, pieChartOptions } from "variables/charts";
-import Card from "components/card";
+import PieChart from "../../../../../Components/charts/PieChart";
+import { pieChartData, pieChartOptions } from "../../../variables/charts";
+import Card from "../../../../../Components/card";
 
 const PieChartCard = () => {
   return (
@@ -13,7 +13,7 @@ const PieChartCard = () => {
         </div>
 
         <div className="mb-6 flex items-center justify-center">
-          <select className="mb-3 flex items-center justify-center text-sm font-bold text-gray-600 me-2 hover:cursor-pointer dark:!bg-navy-800 dark:text-white">
+          <select className="mb-3 mr-2 flex items-center justify-center text-sm font-bold text-gray-600 hover:cursor-pointer dark:!bg-navy-800 dark:text-white">
             <option value="monthly">Monthly</option>
             <option value="yearly">Yearly</option>
             <option value="weekly">Weekly</option>
@@ -28,7 +28,7 @@ const PieChartCard = () => {
         <div className="flex flex-col items-center justify-center">
           <div className="flex items-center justify-center">
             <div className="h-2 w-2 rounded-full bg-brand-500" />
-            <p className="text-sm font-normal text-gray-600 ms-1">Your Files</p>
+            <p className="ml-1 text-sm font-normal text-gray-600">Your Files</p>
           </div>
           <p className="mt-px text-xl font-bold text-navy-700  dark:text-white">
             63%
@@ -40,7 +40,7 @@ const PieChartCard = () => {
         <div className="flex flex-col items-center justify-center">
           <div className="flex items-center justify-center">
             <div className="h-2 w-2 rounded-full bg-[#6AD2FF]" />
-            <p className="text-sm font-normal text-gray-600 ms-1">System</p>
+            <p className="ml-1 text-sm font-normal text-gray-600">System</p>
           </div>
           <p className="mt-px text-xl font-bold text-navy-700 dark:text-white">
             25%

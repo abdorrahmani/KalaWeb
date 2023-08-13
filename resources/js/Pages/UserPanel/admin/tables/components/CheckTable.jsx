@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
-import CardMenu from "components/card/CardMenu";
-import Card from "components/card";
-import Checkbox from "components/checkbox";
+import CardMenu from "../../../../../Components/card/CardMenu";
+import Card from "../../../../../Components/card";
+import Checkbox from "../../../../../Components/checkbox";
 
 import {
   useGlobalFilter,

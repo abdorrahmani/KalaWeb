@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import DashIcon from "components/icons/DashIcon";
+import DashIcon from "../../icons/DashIcon";
 // chakra imports
 
 export function SidebarLinks(props) {

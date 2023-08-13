@@ -1,5 +1,5 @@
-import Card from "components/card";
-import CardMenu from "components/card/CardMenu";
+import Card from "../../../../../Components/card";
+import CardMenu from "../../../../../Components/card/CardMenu";
 import React from "react";
 import { BsCloudCheck } from "react-icons/bs";
 const Storage = () => {

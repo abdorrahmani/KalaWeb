@@ -1,5 +1,5 @@
-import CardMenu from "components/card/CardMenu";
-import Card from "components/card";
+import CardMenu from "../../../../../Components/card/CardMenu";
+import Card from "../../../../../Components/card";
 import {
   useGlobalFilter,
   usePagination,
@@ -8,7 +8,7 @@ import {
 } from "react-table";
 import { MdCheckCircle, MdCancel, MdOutlineError } from "react-icons/md";
 import { useMemo } from "react";
-import Progress from "components/progress";
+import Progress from "../../../../../Components/progress";
 const ComplexTable = (props) => {
   const { columnsData, tableData } = props;
 
@@ -53,7 +53,7 @@ const ComplexTable = (props) => {
                   <th
                     {...column.getHeaderProps(column.getSortByToggleProps())}
                     key={index}
-                    className="border-b border-gray-200 pb-[10px] text-start pe-28 dark:!border-navy-700"
+                    className="border-b border-gray-200 pr-28 pb-[10px] text-start dark:!border-navy-700"
                   >
                     <p className="text-xs tracking-wide text-gray-600">
                       {column.render("Header")}

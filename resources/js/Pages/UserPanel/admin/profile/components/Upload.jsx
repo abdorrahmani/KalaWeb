@@ -1,5 +1,5 @@
 import { MdFileUpload } from "react-icons/md";
-import Card from "components/card";
+import Card from "../../../../../Components/card";
 import React from "react";
 
 const Upload = () => {

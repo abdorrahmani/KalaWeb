@@ -1,6 +1,6 @@
-import InputField from "components/fields/InputField";
+import InputField from "../../../Components/fields/InputField";
 import { FcGoogle } from "react-icons/fc";
-import Checkbox from "components/checkbox";
+import Checkbox from "../../../Components/checkbox";
 
 export default function SignIn() {
   return (

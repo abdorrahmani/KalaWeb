@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
-import CardMenu from "components/card/CardMenu";
-import Checkbox from "components/checkbox";
-import Card from "components/card";
+import CardMenu from "../../../../../Components/card/CardMenu";
+import Checkbox from "../../../../../Components/checkbox";
+import Card from "../../../../../Components/card";
 
 import {
   useGlobalFilter,
@@ -60,7 +60,7 @@ const CheckTable = (props) => {
                 {headerGroup.headers.map((column, index) => (
                   <th
                     {...column.getHeaderProps(column.getSortByToggleProps())}
-                    className="border-b border-gray-200 pb-[10px] text-start pe-16 dark:!border-navy-700"
+                    className="border-b border-gray-200 pr-16 pb-[10px] text-start dark:!border-navy-700"
                     key={index}
                   >
                     <div className="text-xs font-bold tracking-wide text-gray-600 lg:text-xs">

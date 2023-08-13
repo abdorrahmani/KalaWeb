@@ -1,6 +1,6 @@
-import Card from "components/card";
-import CardMenu from "components/card/CardMenu";
-import Switch from "components/switch";
+import Card from "../../../../../Components/card";
+import CardMenu from "../../../../../Components/card/CardMenu";
+import Switch from "../../../../../Components/switch";
 import React from "react";
 
 function Notification() {

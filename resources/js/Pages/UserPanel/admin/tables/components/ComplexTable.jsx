@@ -1,5 +1,5 @@
-import CardMenu from "components/card/CardMenu";
-import Card from "components/card";
+import CardMenu from "../../../../../Components/card/CardMenu";
+import Card from "../../../../../Components/card";
 import {
   useGlobalFilter,
   usePagination,
@@ -8,7 +8,7 @@ import {
 } from "react-table";
 import { MdCheckCircle, MdCancel, MdOutlineError } from "react-icons/md";
 import { useMemo } from "react";
-import Progress from "components/progress";
+import Progress from "../../../../../Components/progress";
 const ComplexTable = (props) => {
   const { columnsData, tableData } = props;
 

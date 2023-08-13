@@ -1,5 +1,5 @@
-import CardMenu from "components/card/CardMenu";
-import Card from "components/card";
+import CardMenu from "../../../../../Components/card/CardMenu";
+import Card from "../../../../../Components/card";
 import { DiApple } from "react-icons/di";
 import { DiAndroid } from "react-icons/di";
 import { DiWindows } from "react-icons/di";
@@ -11,7 +11,7 @@ import {
   useSortBy,
   useTable,
 } from "react-table";
-import Progress from "components/progress";
+import Progress from "../../../../../Components/progress";
 
 const DevelopmentTable = (props) => {
   const { columnsData, tableData } = props;

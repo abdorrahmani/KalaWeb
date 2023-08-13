@@ -1,5 +1,5 @@
-import CardMenu from "components/card/CardMenu";
-import Card from "components/card";
+import CardMenu from "../../../../../Components/card/CardMenu";
+import Card from "../../../../../Components/card";
 import React, { useMemo } from "react";
 import {
   useGlobalFilter,

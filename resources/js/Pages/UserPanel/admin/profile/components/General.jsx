@@ -1,4 +1,4 @@
-import Card from "components/card";
+import Card from "../../../../../Components/card";
 import React from "react";
 
 const General = () => {

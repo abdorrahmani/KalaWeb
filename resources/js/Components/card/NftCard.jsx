@@ -1,6 +1,6 @@
 import { IoHeart, IoHeartOutline } from "react-icons/io5";
 import { useState } from "react";
-import Card from "components/card";
+import Card from "../card";
 
 const NftCard = ({ title, author, price, image, bidders, extra }) => {
   const [heart, setHeart] = useState(true);
