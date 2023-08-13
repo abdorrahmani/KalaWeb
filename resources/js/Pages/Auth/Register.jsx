@@ -28,11 +28,12 @@ export default function Register() {
 
     return (
         <GuestLayout>
-            <Head title="Register" />
+            <Head title="ثبت نام" />
+            <p className="text-center text-white p-3"></p>
 
             <form onSubmit={submit}>
                 <div>
-                    <InputLabel htmlFor="name" value="Name" />
+                    <InputLabel htmlFor="name" value="نام" />
 
                     <TextInput
                         id="name"
@@ -49,7 +50,7 @@ export default function Register() {
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel htmlFor="email" value="Email" />
+                    <InputLabel htmlFor="email" value="ایمیل" />
 
                     <TextInput
                         id="email"
@@ -66,7 +67,7 @@ export default function Register() {
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Password" />
+                    <InputLabel htmlFor="password" value="رمز عبور" />
 
                     <TextInput
                         id="password"
@@ -83,7 +84,7 @@ export default function Register() {
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel htmlFor="password_confirmation" value="Confirm Password" />
+                    <InputLabel htmlFor="password_confirmation" value="تکرار رمز عبور" />
 
                     <TextInput
                         id="password_confirmation"
@@ -99,16 +100,16 @@ export default function Register() {
                     <InputError message={errors.password_confirmation} className="mt-2" />
                 </div>
 
-                <div className="flex items-center justify-end mt-4">
+                <div className="flex items-center justify-between mt-4">
                     <Link
                         href={route('login')}
                         className="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
                     >
-                        Already registered?
+                        حساب کاربری دارید؟
                     </Link>
 
                     <PrimaryButton className="ml-4" disabled={processing}>
-                        Register
+                        ثبت نام
                     </PrimaryButton>
                 </div>
             </form>
