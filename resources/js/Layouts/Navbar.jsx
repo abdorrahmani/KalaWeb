@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react'
 import {
     Bars3Icon,
@@ -16,7 +16,8 @@ import {
     XMarkIcon
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
-import {router} from "@inertiajs/react";
+import {Link, router} from "@inertiajs/react";
+import Dropdown from "@/Components/dropdown";
 
 const products = [
     { name: 'موبایل',
@@ -200,129 +201,174 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-export default function Navbar() {
+export default function Navbar({auth}) {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     const [selectedProduct, setSelectedProduct] = useState(null);
 
     return (
-        <header className="bg-[#18181b]">
-            <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
-                <div className="flex lg:flex-1">
-                    <a href="#" className="-m-1.5 p-1.5">
-                        <span className="sr-only">Your Company</span>
-                        <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" />
-                    </a>
-                </div>
-                <div className="flex lg:hidden">
-                    <button
-                        type="button"
-                        className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-                        onClick={() => setMobileMenuOpen(true)}
+        <nav>
+            <div  className="fixed w-full mt-3  z-40 flex flex-row flex-wrap items-center justify-between rounded-xl p-4 bg-scroll backdrop-blur-xl bg-[#0b14374d]"
+                            aria-label="Global">
+            <div className="flex lg:flex-1">
+                <a href="#" className="-m-1.5 p-1.5">
+                    <span className="sr-only">Your Company</span>
+                    <img className="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" />
+                </a>
+            </div>
+            <div className="flex lg:hidden">
+                <button
+                    type="button"
+                    className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+                    onClick={() => setMobileMenuOpen(true)}
+                >
+                    <span className="sr-only">Open main menu</span>
+                    <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+                </button>
+            </div>
+            <Popover.Group className="hidden lg:flex lg:gap-x-12">
+                <Popover className="relative">
+                    <Popover.Button className="flex items-center gap-x-1 text-sm  leading-6 text-white">
+                        دسته بندی
+                        <ChevronDownIcon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
+                    </Popover.Button>
+
+                    <Transition
+                        as={Fragment}
+                        enter="transition ease-out duration-200"
+                        enterFrom="opacity-0 translate-y-1"
+                        enterTo="opacity-100 translate-y-0"
+                        leave="transition ease-in duration-150"
+                        leaveFrom="opacity-100 translate-y-0"
+                        leaveTo="opacity-0 translate-y-1"
                     >
-                        <span className="sr-only">Open main menu</span>
-                        <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-                    </button>
-                </div>
-                <Popover.Group className="hidden lg:flex lg:gap-x-12">
-                    <Popover className="relative">
-                        <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-white">
-                            دسته بندی
-                            <ChevronDownIcon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
-                        </Popover.Button>
-
-                        <Transition
-                            as={Fragment}
-                            enter="transition ease-out duration-200"
-                            enterFrom="opacity-0 translate-y-1"
-                            enterTo="opacity-100 translate-y-0"
-                            leave="transition ease-in duration-150"
-                            leaveFrom="opacity-100 translate-y-0"
-                            leaveTo="opacity-0 translate-y-1"
-                        >
-                            <Popover.Panel className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-[#18181b] shadow-lg ring-1 ring-gray-900/5">
-                                <div className="p-4">
-                                    {products.map((item) => (
-                                        <div
-                                            key={item.name}
-                                            className="group relative flex items-center gap-x-6 rounded-lg p-2 text-sm leading-6 hover:bg-black"
-                                            onMouseOver={() => setSelectedProduct(item.name)}
-                                        >
-                                            <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-black group-hover:bg-white">
-                                                <item.icon className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
-                                            </div>
-                                            <div className="flex-auto">
-                                                <a href={item.href} className="block font-semibold text-white">
-                                                    {item.name}
-                                                    <span className="absolute inset-0" />
-                                                </a>
-                                            </div>
-                                            {/* کد قسمت مرتبط با محصول */}
-                                            {selectedProduct === item.name && (
-                                                <Transition
-                                                    // کد ترانزیشن و پنل مرتبط با زیردسته‌بندی‌ها
-                                                >
-                                                    <Popover.Panel className="absolute -left-10 top-full z-20 max-80 max-w-md h-max overflow-hidden rounded-3xl bg-zinc-800 shadow-lg ring-1 ring-gray-900/5">
-                                                        <div className="p-4 grid ">
-                                                            {item.Subproducts.map((subCategory) => (
-                                                                <div
-                                                                    key={subCategory.name}
-                                                                    className="group relative flex items-center gap-x-6 rounded-lg p-2 text-sm leading-6 hover:bg-black"
-                                                                >
-                                                                    <div className="flex-auto">
-                                                                        <a href={subCategory.href} className="block font-semibold text-white">
-                                                                            {subCategory.name}
-                                                                            <span className="absolute inset-0" />
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            ))}
-                                                        </div>
-                                                    </Popover.Panel>
-
-                                                </Transition>
-                                            )}
-
-                                            <Popover className="relative">
-                                                <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-white">
-                                                    <ChevronDownIcon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
-                                                </Popover.Button>
-
-                                                <Transition
-                                                    as={Fragment}
-                                                    enter="transition ease-out duration-200"
-                                                    enterFrom="opacity-0 translate-y-1"
-                                                    enterTo="opacity-100 translate-y-0"
-                                                    leave="transition ease-in duration-150"
-                                                    leaveFrom="opacity-100 translate-y-0"
-                                                    leaveTo="opacity-0 translate-y-1"
-                                                >
-                                                </Transition>
-                                            </Popover>
+                        <Popover.Panel className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-[#18181b] shadow-lg ring-1 ring-gray-900/5">
+                            <div className="p-4">
+                                {products.map((item) => (
+                                    <div
+                                        key={item.name}
+                                        className="group relative flex items-center gap-x-6 rounded-lg p-2 text-sm leading-6 hover:bg-black"
+                                        onMouseOver={() => setSelectedProduct(item.name)}
+                                    >
+                                        <div className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-black group-hover:bg-white">
+                                            <item.icon className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
                                         </div>
+                                        <div className="flex-auto">
+                                            <a href={item.href} className="block  text-white">
+                                                {item.name}
+                                                <span className="absolute inset-0" />
+                                            </a>
+                                        </div>
+                                        {/* کد قسمت مرتبط با محصول */}
+                                        {selectedProduct === item.name && (
+                                            <Transition
+                                                // کد ترانزیشن و پنل مرتبط با زیردسته‌بندی‌ها
+                                            >
+                                                <Popover.Panel className="absolute -left-10 top-full z-20 max-80 max-w-md h-max overflow-hidden rounded-3xl bg-zinc-800 shadow-lg ring-1 ring-gray-900/5">
+                                                    <div className="p-4 grid ">
+                                                        {item.Subproducts.map((subCategory) => (
+                                                            <div
+                                                                key={subCategory.name}
+                                                                className="group relative flex items-center gap-x-6 rounded-lg p-2 text-sm leading-6 hover:bg-black"
+                                                            >
+                                                                <div className="flex-auto">
+                                                                    <a href={subCategory.href} className="block  text-white">
+                                                                        {subCategory.name}
+                                                                        <span className="absolute inset-0" />
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                </Popover.Panel>
 
-                                    ))}
+                                            </Transition>
+                                        )}
+
+                                        <Popover className="relative">
+                                            <Popover.Button className="flex items-center gap-x-1 text-sm  leading-6 text-white">
+                                                <ChevronDownIcon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
+                                            </Popover.Button>
+
+                                            <Transition
+                                                as={Fragment}
+                                                enter="transition ease-out duration-200"
+                                                enterFrom="opacity-0 translate-y-1"
+                                                enterTo="opacity-100 translate-y-0"
+                                                leave="transition ease-in duration-150"
+                                                leaveFrom="opacity-100 translate-y-0"
+                                                leaveTo="opacity-0 translate-y-1"
+                                            >
+                                            </Transition>
+                                        </Popover>
+                                    </div>
+
+                                ))}
+                            </div>
+
+                        </Popover.Panel>
+                    </Transition>
+                </Popover>
+
+                <a href="#" className="text-sm  leading-6 text-white">
+                    سوپرمارکت
+                </a>
+                <a href="#" className="text-sm  leading-6 text-white">
+                    در کالاوب بفروشید
+                </a>
+                <a href="#" className="text-sm  leading-6 text-white">
+                    پر فروش ترین ها
+                </a>
+            </Popover.Group>
+            <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+                {auth.user ? (
+                    <Dropdown>
+                        <Dropdown.Trigger>
+                                        <span className="inline-flex rounded-md">
+                                           <img
+                                               className="h-10 w-10 rounded-full"
+                                               src="https://avatars.githubusercontent.com/u/53135000?v=4"
+                                               alt="Elon Musk"
+                                           />
+
+                                        </span>
+                        </Dropdown.Trigger>
+
+                        <Dropdown.Content>
+                            <div dir="rtl"
+                                 className="flex left-3 w-56 flex-col justify-start rounded-[20px] bg-white bg-cover bg-no-repeat shadow-xl shadow-shadow-500 dark:!bg-navy-700 dark:text-white dark:shadow-none">
+                                <div className="p-4">
+                                    <div className="flex items-center gap-2"><p
+                                        className="text-sm font-bold text-navy-700 dark:text-white">محمد عبدالرحمانی</p>
+                                    </div>
                                 </div>
+                                <div className="h-px w-full bg-gray-200 dark:bg-white/20 ">
 
-                            </Popover.Panel>
-                        </Transition>
-                    </Popover>
+                                </div>
+                                <div className="flex flex-col p-4">
+                                    <a href=" "
+                                       className="text-sm text-gray-800 dark:text-white hover:dark:text-white">پروفایل</a>
+                                    {auth.user.type === "admin" ? (
+                                        <Link href={route('admin.dashboard')}
+                                           className="mt-3 text-sm text-gray-800 dark:text-white hover:dark:text-white">ادمین پنل</Link>
+                                    ) : ('')}
 
-                    <a href="#" className="text-sm font-semibold leading-6 text-white">
-                        سوپرمارکت
-                    </a>
-                    <a href="#" className="text-sm font-semibold leading-6 text-white">
-                        در کالاوب بفروشید
-                    </a>
-                    <a href="#" className="text-sm font-semibold leading-6 text-white">
-                        پر فروش ترین ها
-                    </a>
-                </Popover.Group>
-                <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <a  href={route('login')} className="text-sm font-semibold leading-6 text-white">
+                                    <Link href={route('dashboard')}
+                                          className="mt-3 text-sm text-gray-800 dark:text-white hover:dark:text-white">حساب کاربری</Link>
+                                    <a href=" "
+                                       className="mt-3 text-sm text-gray-800 dark:text-white hover:dark:text-white">سفارش ها</a>
+                                    <a href=" "
+                                       className="mt-3 text-sm font-medium text-red-500 hover:text-red-500">خروج از حساب کاربری</a></div>
+                            </div>
+                        </Dropdown.Content>
+                    </Dropdown>
+                ):(
+                    <a  href={route('login')} className="text-sm leading-6 text-white">
                         ورود به حساب کاربری <span aria-hidden="true">&rarr;</span>
                     </a>
-                </div>
-            </nav>
+                )}
+
+            </div>
+        </div>
             <Dialog as="div" className="lg:hidden" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
                 <div className="fixed inset-0 z-10" />
                 <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
@@ -404,6 +450,9 @@ export default function Navbar() {
                     </div>
                 </Dialog.Panel>
             </Dialog>
-        </header>
+
+        </nav>
+
+
     )
 }

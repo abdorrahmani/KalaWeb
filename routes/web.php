@@ -20,14 +20,17 @@ Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
     ]);
-});
+})->name('home');
 
 Route::get('/dashboard', function () {
     return Inertia::render('UserPanel/admin/default/index');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/admin-dashboard', function () {
+    return Inertia::render('AdminPanel/admin/default/index');
+})->middleware("user.access:admin")->name('admin.dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
