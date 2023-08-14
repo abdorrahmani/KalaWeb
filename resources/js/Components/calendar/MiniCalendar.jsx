@@ -11,11 +11,11 @@ const MiniCalendar = () => {
   return (
     <div>
       <Card extra="flex w-full h-full flex-col px-3 py-3">
-        <Calendar
+        <Calendar className=" w-[auto]"
           onChange={onChange}
           value={value}
-          prevLabel={<MdChevronLeft className="ml-1 h-6 w-6 " />}
-          nextLabel={<MdChevronRight className="ml-1 h-6 w-6 " />}
+          prevLabel={<MdChevronRight className="mr-1 h-6 w-6 " />}
+          nextLabel={<MdChevronLeft className="mr-1 h-6 w-6 " />}
           view={"month"}
         />
       </Card>
