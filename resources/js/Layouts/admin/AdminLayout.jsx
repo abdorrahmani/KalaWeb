@@ -4,10 +4,9 @@ import Sidebar from "../../Components/sidebar";
 import Footer from "../../Components/footer/Footer";
 import AdminSidebar from "@/Components/sidebar/Admin.jsx";
 
-export default function AdminLayout({children},props) {
-    const { ...rest } = props;
+export default function AdminLayout({children,currentRoute},props) {
+
     const [open, setOpen] = React.useState(true);
-    const [currentRoute, setCurrentRoute] = React.useState("Main Dashboard");
 
     React.useEffect(() => {
         window.addEventListener("resize", () =>
@@ -32,8 +31,6 @@ export default function AdminLayout({children},props) {
                             onOpenSidenav={() => setOpen(true)}
                             logoText={"Horizon UI Tailwind React"}
                             brandText={currentRoute}
-
-                            {...rest}
                         />
                         <div className="pt-5s mx-auto mb-auto h-full min-h-[84vh] p-2 md:pr-2">{children}</div>
                         <div className="p-3">

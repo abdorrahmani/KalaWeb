@@ -14,30 +14,30 @@ import DevelopmentTable from "./components/DevelopmentTable";
 import ColumnsTable from "./components/ColumnsTable";
 import ComplexTable from "./components/ComplexTable";
 import AdminLayout from "@/Layouts/admin/AdminLayout.jsx";
+import PrimaryButton from "@/Components/PrimaryButton.jsx";
 
-const Tables = () => {
+const Product = (props) => {
   return (
-    <AdminLayout>
-      <div className="mt-5 grid h-full grid-cols-1 gap-5 md:grid-cols-2">
+    <AdminLayout currentRoute="محصولات">
+        <div className="p-2 flex gap-4">
+            <a href={route('products.create')}>
+                <PrimaryButton className="bg-red-500/20"> اضافه کردن محصول جدید</PrimaryButton>
+            </a>
+            <PrimaryButton className="bg-indigo-500/20">محصولات ناموجود</PrimaryButton>
+            <PrimaryButton className="bg-yellow-500/20">انبار</PrimaryButton>
+        </div>
+
+      <div className="mt-5 grid h-full grid-cols-1 gap-5 md:grid-cols-1">
         <DevelopmentTable
-            title="سفارشات در حال ارسال"
+            title="آخرین محصولات"
             columnsData={columnsDataDevelopment}
             tableData={tableDataDevelopment}
         />
-          <CheckTable  title="سفارشات آماده تایید برای ارسال"  columnsData={columnsDataCheck} tableData={tableDataCheck} />
 
       </div>
 
-      <div className="mt-5 grid h-full grid-cols-1 gap-5 md:grid-cols-2">
-          <ColumnsTable
-              title="سفارشات در حال آماده شدن"
-              columnsData={columnsDataColumns}
-              tableData={tableDataColumns}
-          />
-
-      </div>
     </AdminLayout>
   );
 };
 
-export default Tables;
+export default Product;

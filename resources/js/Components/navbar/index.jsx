@@ -11,7 +11,7 @@ import {
 import avatar from "../../../assets/img/avatars/avatar4.png";
 
 const Navbar = (props) => {
-  const { onOpenSidenav, brandText } = props;
+  const { onOpenSidenav, brandText  } = props;
   const [darkmode, setDarkmode] = React.useState(false);
 
   return (
@@ -24,7 +24,7 @@ const Navbar = (props) => {
                    href=" ">صفحه<span
                    className="mx-1 text-sm text-navy-700 hover:text-navy-700 dark:text-white"> / </span></a><a
                    className="text-sm font-normal capitalize text-navy-700 hover:underline dark:text-white dark:hover:text-white"
-                   href="/admin/default">داشبورد</a></div>
+                   href="/admin/default">{brandText}</a></div>
                <p className="shrink text-[33px] capitalize text-navy-700 dark:text-white"><a
                    className="font-bold capitalize hover:text-navy-700 dark:hover:text-white" href="/">کالاوب</a></p></div>
            <div
