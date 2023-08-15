@@ -11,7 +11,7 @@ import {
 } from "react-table";
 
 const CheckTable = (props) => {
-  const { columnsData, tableData } = props;
+  const { columnsData, tableData , title } = props;
 
   const columns = useMemo(() => columnsData, [columnsData]);
   const data = useMemo(() => tableData, [tableData]);
@@ -40,10 +40,10 @@ const CheckTable = (props) => {
     <Card extra={"w-full sm:overflow-auto p-4"}>
       <header className="relative flex items-center justify-between">
         <div className="text-xl font-bold text-navy-700 dark:text-white">
-          Check Table
+            {props.title}
         </div>
 
-        <CardMenu />
+
       </header>
 
       <div className="mt-8 overflow-x-scroll xl:overflow-x-hidden">

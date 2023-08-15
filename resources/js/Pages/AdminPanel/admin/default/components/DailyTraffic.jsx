@@ -1,6 +1,6 @@
 import BarChart from "../../../../../Components/charts/BarChart";
-import { barChartDataDailyTraffic } from "../../../variables/charts";
-import { barChartOptionsDailyTraffic } from "../../../variables/charts";
+import { barChartDataDailyTraffic } from "../../variables/charts";
+import { barChartOptionsDailyTraffic } from "../../variables/charts";
 import { MdArrowDropUp } from "react-icons/md";
 import Card from "../../../../../Components/card";
 const DailyTraffic = () => {
@@ -9,12 +9,12 @@ const DailyTraffic = () => {
       <div className="flex flex-row justify-between">
         <div className="ml-1 pt-2">
           <p className="text-sm font-medium leading-4 text-gray-600">
-            Daily Traffic
+            ترافیک امروز
           </p>
           <p className="text-[34px] font-bold text-navy-700 dark:text-white">
             2.579{" "}
             <span className="text-sm font-medium leading-6 text-gray-600">
-              Visitors
+              دیده شده
             </span>
           </p>
         </div>

@@ -3,8 +3,6 @@
 import { HiX } from "react-icons/hi";
 import Links from "./components/Links";
 
-import SidebarCard from "../sidebar/componentsrtl/SidebarCard";
-
 
 const Sidebar = ({ open, onClose }) => {
   return (
@@ -35,10 +33,10 @@ const Sidebar = ({ open, onClose }) => {
                     <span
                     className="font-bold text-brand-500 dark:text-white">
                         <svg stroke="currentColor" fill="currentColor"
-                                                                              stroke-width="0" viewBox="0 0 24 24"
-                                                                              className="h-6 w-6" height="1em"
-                                                                              width="1em"
-                                                                              xmlns="http://www.w3.org/2000/svg"><path
+                             stroke-width="0" viewBox="0 0 24 24"
+                             className="h-6 w-6" height="1em"
+                             width="1em"
+                             xmlns="http://www.w3.org/2000/svg"><path
                     fill="none" d="M0 0h24v24H0z">
 
                         </path><path

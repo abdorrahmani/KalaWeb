@@ -103,8 +103,8 @@ export const barChartOptionsDailyTraffic = {
 };
 
 export const pieChartOptions = {
-  labels: ["Your files", "System", "Empty"],
-  colors: ["#4318FF", "#6AD2FF", "#EFF4FB"],
+  labels: ["سود خالص", "کل سود"],
+  colors: ["#4318FF", "#6AD2FF"],
   chart: {
     width: "50px",
   },
@@ -133,7 +133,7 @@ export const pieChartOptions = {
     },
   },
   fill: {
-    colors: ["#4318FF", "#6AD2FF", "#EFF4FB"],
+    colors: ["#4318FF", "#6AD2FF"],
   },
   tooltip: {
     enabled: true,
@@ -146,7 +146,7 @@ export const pieChartOptions = {
   },
 };
 
-export const pieChartData = [63, 25, 12];
+export const pieChartData = [63, 25];
 
 export const barChartDataWeeklyRevenue = [
   {
@@ -158,12 +158,7 @@ export const barChartDataWeeklyRevenue = [
     name: "PRODUCT B",
     data: [400, 370, 330, 390, 320, 350, 360, 320, 380],
     color: "#4318FF",
-  },
-  {
-    name: "PRODUCT C",
-    data: [400, 370, 330, 390, 320, 350, 360, 320, 380],
-    color: "#EFF4FB",
-  },
+  }
 ];
 
 export const barChartOptionsWeeklyRevenue = {

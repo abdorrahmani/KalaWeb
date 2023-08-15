@@ -27,9 +27,6 @@ Route::get('/dashboard', function () {
     return Inertia::render('UserPanel/admin/default/index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/admin-dashboard', function () {
-    return Inertia::render('AdminPanel/admin/default/index');
-})->middleware("user.access:admin")->name('admin.dashboard');
 
 
 Route::middleware('auth')->group(function () {
@@ -39,3 +36,4 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+require __DIR__.'/admin.php';
