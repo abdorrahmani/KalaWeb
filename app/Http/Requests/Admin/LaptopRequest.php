@@ -29,7 +29,7 @@ class LaptopRequest extends FormRequest
             'storage' => ['integer'],
             'price' => ['integer'],
             'release_date' => ['date'],
-            'image' => ['image'],
+            'images' => ['image'],
             'body' => ['string'],
             'chipset' => ['string'],
             'cpu' => ['string'],
@@ -41,6 +41,7 @@ class LaptopRequest extends FormRequest
             'weight' => ['string'],
             'resolution' => ['string'],
             'type' => ['string'],
+            'count' => ['integer'],
         ];
     }
 

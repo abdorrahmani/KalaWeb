@@ -107,7 +107,7 @@ function LaptopForm({editorConfiguration}){
         storage : '',
         price : '',
         release_date : '',
-        images : null,
+        images : [],
         body : '',
         status : 0,
         chipset : '',
@@ -126,21 +126,11 @@ function LaptopForm({editorConfiguration}){
     const [type, setType] = useState('');
     const [brand, setBrand] = useState('');
 
-    const handleFileChange=(e)=>{
-        const files = Array.from(e.target.files)
-        setSelectedImage([...selectedImages,...files]);
-    }
     const submit = (e) => {
         e.preventDefault();
-        const formData = new FormData();
-        selectedImages.forEach(image =>{
-            formData.append('images[]' , image)
-        })
 
-        post(route('products.store'), {forceFormData:true});
+        post(route('product.store.laptop'), {forceFormData:true});
     };
-
-
 
     return(
         <form onSubmit={submit}>
@@ -191,7 +181,6 @@ function LaptopForm({editorConfiguration}){
                             <option value="acer">Acer</option>
                             <option value="xiaomi">Xiaomi</option>
                             <option value="samsung">Samsung</option>
-                            { console.log(brand)}
                         </select>
                     </div>
 
@@ -199,7 +188,7 @@ function LaptopForm({editorConfiguration}){
 
                    <div>
                        <InputLabel id="images" className="">عکس ها :</InputLabel>
-                       <input type="file" className="my-5"  onChange={handleFileChange}
+                       <input type="file" className="my-5"  onChange={(e)=>setData('images[]',e.target.value)}
                               accept="image/png, image/jpeg" multiple/>
                    </div>
 

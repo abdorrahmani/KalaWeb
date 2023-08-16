@@ -21,4 +21,7 @@ Route::middleware(['auth',"user.access:admin"])->prefix('/admin')->group(functio
     Route::resource('/blog',\App\Http\Controllers\Admin\BlogController::class);
     Route::resource('/comments',\App\Http\Controllers\Admin\CommentController::class);
     Route::resource('/products',\App\Http\Controllers\Admin\ProductController::class);
+    Route::post('/products/create',[\App\Http\Controllers\Admin\ProductController::class , 'laptopStore'])->name('product.store.laptop');
+    Route::post('/products/create',[\App\Http\Controllers\Admin\ProductController::class , 'phoneStore'])->name('product.store.phone');
+    Route::post('/products/create',[\App\Http\Controllers\Admin\ProductController::class , 'dataStorageStore'])->name('product.store.storage');
 });
