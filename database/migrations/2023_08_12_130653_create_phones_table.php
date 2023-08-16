@@ -38,6 +38,8 @@ return new class extends Migration
             $table->string('size');
             $table->string('weight');
             $table->string('status')->default(true);
+            $table->integer('count');
+            $table->string('type');
             $table->timestamps();
         });
     }

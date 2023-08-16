@@ -20,6 +20,7 @@ class ProductController extends Controller
 
     public function create()
     {
+        return Inertia::render('AdminPanel/admin/Products/Create');
     }
 
     public function store(Request $request)

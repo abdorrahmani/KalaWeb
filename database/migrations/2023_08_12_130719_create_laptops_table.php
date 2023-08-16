@@ -22,9 +22,10 @@ return new class extends Migration
             $table->integer('storage');
             $table->double('price');
             $table->date('release_date');
-            $table->string('image');
+            $table->string('images');
             $table->longText('body');
             $table->boolean('status')->default(true);
+            $table->integer('count');
             $table->string('chipset');
             $table->string('cpu');
             $table->string('gpu');

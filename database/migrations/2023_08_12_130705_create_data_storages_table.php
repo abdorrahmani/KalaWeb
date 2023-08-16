@@ -25,6 +25,8 @@ return new class extends Migration
             $table->string('image');
             $table->text('color');
             $table->longText('body');
+            $table->string('weight');
+            $table->integer('count');
             $table->timestamps();
         });
     }
