@@ -14,6 +14,7 @@ import {
 export default function Create() {
     const [showComponent, setShowComponent] = useState(null);
 
+
     const editorConfiguration = {
 
         language: {ui: 'fa', content: "fa" },
@@ -121,12 +122,25 @@ function LaptopForm({editorConfiguration}){
         type : '',
         count : '',
     });
+    const [selectedImages , setSelectedImage] = useState([]);
     const [type, setType] = useState('');
-    const [brand] = useState('');
+    const [brand, setBrand] = useState('');
+
+    const handleFileChange=(e)=>{
+        const files = Array.from(e.target.files)
+        setSelectedImage([...selectedImages,...files]);
+    }
     const submit = (e) => {
         e.preventDefault();
-        post(route(''), {forceFormData:true});
+        const formData = new FormData();
+        selectedImages.forEach(image =>{
+            formData.append('images[]' , image)
+        })
+
+        post(route('products.store'), {forceFormData:true});
     };
+
+
 
     return(
         <form onSubmit={submit}>
@@ -165,10 +179,10 @@ function LaptopForm({editorConfiguration}){
                         </Select>
                     </FormControl>
 
-                    <FormControl id="brand" >
-                        <FormLabel>برند:</FormLabel>
-                        <Select placeholder="برند لپ تاپ" value={brand}
-                                onChange={(event) => setData('brand',event.target.value)}>
+                    <div>
+                        <InputLabel>برند:</InputLabel>
+                        <select placeholder="برند لپ تاپ" value={brand}
+                                onChange={(event) => setBrand(setData('brand',event.target.value))}>
                             <option className="p-2" value="macbook">macbook</option>
                             <option value="hp">HP</option>
                             <option value="asus">Asus</option>
@@ -177,12 +191,15 @@ function LaptopForm({editorConfiguration}){
                             <option value="acer">Acer</option>
                             <option value="xiaomi">Xiaomi</option>
                             <option value="samsung">Samsung</option>
-                        </Select>
-                    </FormControl>
+                            { console.log(brand)}
+                        </select>
+                    </div>
+
+
 
                    <div>
-                       <InputLabel id="course_id" className="">عکس ها :</InputLabel>
-                       <input type="file" className="my-5"  onChange={e => setData('images', e.target.files[0])}
+                       <InputLabel id="images" className="">عکس ها :</InputLabel>
+                       <input type="file" className="my-5"  onChange={handleFileChange}
                               accept="image/png, image/jpeg" multiple/>
                    </div>
 

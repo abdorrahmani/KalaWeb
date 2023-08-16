@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\LaptopRequest;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -23,8 +24,10 @@ class ProductController extends Controller
         return Inertia::render('AdminPanel/admin/Products/Create');
     }
 
-    public function store(Request $request)
+    public function store(LaptopRequest $request)
     {
+
+        dd($request);
     }
 
     public function show($id)
